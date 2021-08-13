@@ -22,3 +22,8 @@ jobs:
         run: |
           git clone https://github.com/dotnet/orleans
           .\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb\NuGet.exe -solutionFilePath .\orleans\Orleans.sln -resultsFilePath results.csv -skipCleanRestores -skipColdRestores -skipForceRestores
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: .\perftests\results.csv
