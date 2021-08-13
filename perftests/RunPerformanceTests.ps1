@@ -172,7 +172,7 @@ Try
     # Setup the NuGet folders - This includes global packages folder/http/plugin caches
     SetupNuGetFolders $nugetClientFilePath $nugetFoldersPath
 
-    $processorInfo = GetProcessorInfo
+    # $processorInfo = GetProcessorInfo
 
     Log "Measuring restore for $solutionFilePath by $nugetClientFilePath" "Green"
 
