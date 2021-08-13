@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+jobs:
+  test:
+    runs-on: windows-2019
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Clone Orleans
+        run: |
+          git clone https://github.com/dotnet/orleans
+      - name: Run tests
+        run: |
+          .\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb\NuGet.exe -solutionFilePath .\orleans\Orleans.sln -resultsFilePath results.csv -skipCleanRestores -skipColdRestores -skipForceRestores
