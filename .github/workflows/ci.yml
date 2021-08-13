@@ -14,9 +14,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Clone Orleans
-        run: |
-          git clone https://github.com/dotnet/orleans
+      - name: Setup .NET SDK v5.0.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
       - name: Run tests
         run: |
+          git clone https://github.com/dotnet/orleans
           .\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb\NuGet.exe -solutionFilePath .\orleans\Orleans.sln -resultsFilePath results.csv -skipCleanRestores -skipColdRestores -skipForceRestores
