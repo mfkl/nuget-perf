@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         run: |
           git clone https://github.com/dotnet/orleans
-          .\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb\NuGet.exe -solutionFilePath .\orleans\Orleans.sln -resultsFilePath "result-$((Get-Date).ToString('MM-dd-yyyyhh-mm-ss')).csv" -skipCleanRestores -skipColdRestores -skipForceRestores
+          .\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb\NuGet.exe -solutionFilePath .\orleans\Orleans.sln -resultsFilePath "result-$((Get-Date).ToString('MM-dd-yyyyhh-mm-ss')).csv" -skipCleanRestores -skipColdRestores -skipForceRestores -iterationCount 10
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
