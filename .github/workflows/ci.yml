@@ -40,6 +40,8 @@ jobs:
               ForEach ($solution In $solutions) {
                   ForEach ($version In $versions) {
                     .\scripts\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\artifacts\$version\NuGet.exe -solutionFilePath $solution -resultsFilePath results.csv -skipCleanRestores -skipColdRestores -skipForceRestores -iterationCount ${{env.ITERATION_COUNT}}
+                    Add-Content -Path .\results.csv -Value $version
+                    Add-Content -Path .\results.csv -Value ""
                   }
               }
           }
