@@ -23,8 +23,6 @@ jobs:
       - name: Checkout test solutions
         run: |
           git clone --recursive https://github.com/dotnet/orleans
-          git clone --recursive https://github.com/OrchardCMS/OrchardCore.git
-          git clone --recursive https://github.com/NuGet/NuGet.Client.git
 
       - name: Disable strong name verification
         run: |
@@ -36,7 +34,7 @@ jobs:
       - name: Benchmark
         shell: pwsh
         run: |
-          $solutions = @("NuGet.Client", "OrchardCore", "orleans")
+          $solutions = @("orleans")
           $versions = @("${{env.BASE_VERSION}}", "${{env.BRANCH_VERSION}}")
           For ($i=0; $i -lt 2; $i++) {
               ForEach ($solution In $solutions) {
