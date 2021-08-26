@@ -1,0 +1,12 @@
+Client Name,Client Version,Solution Name,Test Run ID,Scenario Name,Total Time (seconds),Core Restore Time (seconds),Force,Static Graph,Global Packages Folder .nupkg Count,Global Packages Folder .nupkg Size (MB),Global Packages Folder File Count,Global Packages Folder File Size (MB),Clean Global Packages Folder,HTTP Cache File Count,HTTP Cache File Size (MB),Clean HTTP Cache,Plugins Cache File Count,Plugins Cache File Size (MB),Clean Plugins Cache,Kill MSBuild and dotnet Processes,Processor Name,Processor Physical Core Count,Processor Logical Core Count
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,warmup,48.3479465,,False,N/A,516,423.286889,15568,2211.912209,True,852,423.604539,True,0,0,True,True,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.4287984,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.1004432,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,5.9615035,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,5.9610355,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.2306999,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.2564652,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.0163616,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.0909716,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.1295408,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
+NuGet.exe,6.0.0.32767,Orleans,2021-08-20T07:16:55.2516432Z,noop,6.1088254,,False,N/A,516,423.286889,15568,2211.912209,False,852,423.604539,False,0,0,False,False,,,
