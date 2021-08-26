@@ -1,4 +1,4 @@
-name: CI
+name: benchmark_nuget_windows
 
 on:
   push:
@@ -6,25 +6,48 @@ on:
   workflow_dispatch:
 
 env:
+  ITERATION_COUNT: 10
+  BASE_VERSION: dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb
+  BRANCH_VERSION: caching-touch-metadata
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  test:
+  benchmark_nuget_windows:
     runs-on: windows-2019
     steps:
+
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup .NET SDK v5.0.x
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.0.x
-      - name: Run tests
+
+      - name: Checkout test solutions
         run: |
-          git clone https://github.com/dotnet/orleans
-          .\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb\NuGet.exe -solutionFilePath .\orleans\Orleans.sln -resultsFilePath "result-$((Get-Date).ToString('MM-dd-yyyyhh-mm-ss')).csv" -skipCleanRestores -skipColdRestores -skipForceRestores -iterationCount 10
+          git clone --recursive https://github.com/dotnet/orleans
+          git clone --recursive https://github.com/OrchardCMS/OrchardCore.git
+          git clone --recursive https://github.com/NuGet/NuGet.Client.git
+
+      - name: Disable strong name verification
+        run: |
+          reg DELETE "HKLM\Software\Microsoft\StrongName\Verification" /f
+          reg ADD "HKLM\Software\Microsoft\StrongName\Verification\*,*" /f
+          reg DELETE "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification" /f
+          reg ADD "HKLM\Software\Wow6432Node\Microsoft\StrongName\Verification\*,*" /f
+
+      - name: Benchmark
+        shell: pwsh
+        run: |
+          $solutions = @("NuGet.Client", "OrchardCore", "orleans")
+          $versions = @("${{env.BASE_VERSION}}", "${{env.BRANCH_VERSION}}")
+          For ($i=0; $i -lt 2; $i++) {
+              ForEach ($solution In $solutions) {
+                  ForEach ($version In $versions) {
+                    .\scripts\perftests\RunPerformanceTests.ps1 -nugetClientFilePath .\artifacts\$version\NuGet.exe -solutionFilePath $solution -resultsFilePath results.csv -skipCleanRestores -skipColdRestores -skipForceRestores -iterationCount ${{env.ITERATION_COUNT}}
+                  }
+              }
+          }
+
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
-          name: results
-          path: .\*.csv
+          name: results_windows_nuget
+          path: results.csv
