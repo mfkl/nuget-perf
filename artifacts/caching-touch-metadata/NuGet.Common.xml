@@ -476,6 +476,11 @@
             Package dependency downgraded because of centrally defined package version.
             </summary>
         </member>
+        <member name="F:NuGet.Common.NuGetLogCode.NU1110">
+            <summary>
+            No metadata file found
+            </summary>
+        </member>
         <member name="F:NuGet.Common.NuGetLogCode.NU1201">
             <summary>
             Dependency project has an incompatible framework.
