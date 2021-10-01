@@ -8,7 +8,8 @@ on:
 env:
   ITERATION_COUNT: 10
   BASE_VERSION: dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb
-  BRANCH_VERSION: caching-touch-metadata
+  BRANCH_VERSION1: caching-touch-metadata
+  BRANCH_VERSION2: caching-touch-metadata3
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
@@ -35,7 +36,7 @@ jobs:
         shell: pwsh
         run: |
           $solutions = @("orleans")
-          $versions = @("${{env.BASE_VERSION}}", "${{env.BRANCH_VERSION}}")
+          $versions = @("${{env.BASE_VERSION}}", "${{env.BRANCH_VERSION1}}", "${{env.BRANCH_VERSION2}}")
           For ($i=0; $i -lt 2; $i++) {
               ForEach ($solution In $solutions) {
                   ForEach ($version In $versions) {
