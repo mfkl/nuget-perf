@@ -7,8 +7,7 @@ on:
 
 env:
   ITERATION_COUNT: 10
-  BASE_VERSION: dev-b58613fbc338b8e142d29b3bdb74e92a83a259fb
-  BRANCH_VERSION1: caching-touch-metadata
+  BASE_VERSION: dev-927e225f1bbefd3e4df3b5cc3c9371d6f65b723c
   BRANCH_VERSION2: caching-touch-metadata3
   BRANCH_VERSION3: caching-touch-metadata-restorerunner
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
