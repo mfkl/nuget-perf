@@ -349,10 +349,10 @@
         </member>
         <member name="M:NuGet.DependencyResolver.RemoteWalkContext.FilterDependencyProvidersForLibrary(NuGet.LibraryModel.LibraryRange)">
             <summary>
-            Applies Package namespace filtering for a given package
+            Applies source mapping pattern filtering for a given package
             </summary>
             <param name="libraryRange"></param>
-            <returns>Returns a subset of sources when namespaces are configured otherwise returns all the sources</returns>
+            <returns>Returns a subset of sources when source mapping patterns are configured otherwise returns all the sources</returns>
         </member>
         <member name="M:NuGet.DependencyResolver.ResolverUtility.FindPackageLibraryMatchCachedAsync(System.Collections.Concurrent.ConcurrentDictionary{NuGet.LibraryModel.LibraryRange,System.Threading.Tasks.Task{System.Tuple{NuGet.LibraryModel.LibraryRange,NuGet.DependencyResolver.RemoteMatch}}},NuGet.LibraryModel.LibraryRange,NuGet.DependencyResolver.RemoteWalkContext,System.Threading.CancellationToken)">
             <summary>
@@ -387,12 +387,12 @@
         </member>
         <member name="P:NuGet.DependencyResolver.Strings.Log_MatchingSourceFoundForPackage">
             <summary>
-              Looks up a localized string similar to Package namespace matches found for package ID &apos;{0}&apos; are: &apos;{1}&apos;..
+              Looks up a localized string similar to Package source mapping matches found for package ID &apos;{0}&apos; are: &apos;{1}&apos;..
             </summary>
         </member>
         <member name="P:NuGet.DependencyResolver.Strings.Log_NoMatchingSourceFoundForPackage">
             <summary>
-              Looks up a localized string similar to Package namespace match not found for package ID &apos;{0}&apos;..
+              Looks up a localized string similar to Package source mapping match not found for package ID &apos;{0}&apos;..
             </summary>
         </member>
         <member name="M:NuGet.Shared.EqualityUtility.OrderedEquals``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},System.Collections.Generic.IComparer{``1},System.Collections.Generic.IEqualityComparer{``0})">
@@ -451,14 +451,14 @@
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
         <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file. Optionally, whitespace can be preserved.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>

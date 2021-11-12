@@ -2231,7 +2231,7 @@
         </member>
         <member name="M:NuGet.Packaging.PackageBuilder.ValidateReadmeFile(System.Collections.Generic.IEnumerable{NuGet.Packaging.IPackageFile},System.String)">
             <summary>
-            Validate that the readme file is of the correct size/type and can be opened properly.
+            Validate that the readme file is of the correct size/type and can be opened properly except for Symbol packages.
             </summary>
             <param name="files">Files resolved from the file entries in the nuspec</param>
             <param name="readmePath">readmepath found in the .nuspec</param>
@@ -2521,7 +2521,7 @@
         <member name="F:NuGet.Packaging.PackageIdValidator.MaxPackageIdLength">
             <summary>
             Max allowed length for package Id.
-            In case update this value please update in src\NuGet.Core\NuGet.Configuration\PackageNamespaces\PackageNamespacesConfiguration.cs too.
+            In case update this value please update in src\NuGet.Core\NuGet.Configuration\PackageSourceMapping\PackageSourceMapping.cs too.
             </summary>
         </member>
         <member name="P:NuGet.Packaging.PackageExtraction.PackageExtractionBehavior.XmlDocFileSaveMode">
@@ -3450,6 +3450,12 @@
         <member name="M:NuGet.Packaging.Signing.X509SignatureProvider.CreateRepositoryCountersignatureAsync(NuGet.Packaging.Signing.RepositorySignPackageRequest,NuGet.Packaging.Signing.PrimarySignature,NuGet.Common.ILogger,System.Threading.CancellationToken)">
             <summary>
             Countersign the primary signature with a X509Certificate2.
+            </summary>
+        </member>
+        <member name="T:NuGet.Packaging.Signing.IX509ChainBuildPolicy">
+            <summary>
+            Represents a wrapper around <see cref="M:System.Security.Cryptography.X509Certificates.X509Chain.Build(System.Security.Cryptography.X509Certificates.X509Certificate2)" /> to enable
+            custom behaviors (e.g.:  retry on failure).
             </summary>
         </member>
         <member name="M:NuGet.Packaging.Signing.KeyPairFileReader.ReadSection">
@@ -6654,14 +6660,14 @@
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
         <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file. Optionally, whitespace can be preserved.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>

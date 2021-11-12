@@ -82,56 +82,44 @@
             instead of relying on DefaultNetworkCredentials
             </summary>
         </member>
-        <member name="F:NuGet.Configuration.NamespaceMode.AtLeastOneSourcePerPackage">
-            <summary>
-            Relaxed mode for package namespaces.
-            Any package id must be in one or more matching namespace declarations.
-            </summary>
-        </member>
-        <member name="F:NuGet.Configuration.NamespaceMode.SingleSourcePerPackage">
-            <summary>
-            Strict mode for package namespaces.
-            No package id may match more than one feed.
-            </summary>
-        </member>
-        <member name="P:NuGet.Configuration.PackageNamespacesConfiguration.PackageIdMaxLength">
+        <member name="P:NuGet.Configuration.PackageSourceMapping.PackageIdMaxLength">
             <summary>
             Max allowed length for package Id.
             In case update this value please update in src\NuGet.Core\NuGet.Packaging\PackageCreation\Utility\PackageIdValidator.cs too.
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.PackageNamespacesConfiguration.Namespaces">
+        <member name="P:NuGet.Configuration.PackageSourceMapping.Patterns">
             <summary>
-            Source name to package namespace list.
+            Source name to package patterns list.
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.PackageNamespacesConfiguration.AreNamespacesEnabled">
+        <member name="P:NuGet.Configuration.PackageSourceMapping.IsEnabled">
             <summary>
-            Indicate if any packageSource exist in package namespace section
+            Indicate if any packageSource exist in package source mapping section
             </summary>
         </member>
-        <member name="M:NuGet.Configuration.PackageNamespacesConfiguration.GetConfiguredPackageSources(System.String)">
+        <member name="M:NuGet.Configuration.PackageSourceMapping.GetConfiguredPackageSources(System.String)">
             <summary>
-            Get package source names with matching prefix "term" from package namespaces section.
+            Get package source names with matching prefix "packageId" from package source mapping section.
             </summary>
-            <param name="term">Search term. Cannot be null, empty, or whitespace only. </param>
-            <returns>Package source names with matching prefix "term" from package namespaces.</returns>
-            <exception cref="T:System.ArgumentException"> if <paramref name="term"/> is null, empty, or whitespace only.</exception>
+            <param name="packageId">Search packageId. Cannot be null, empty, or whitespace only. </param>
+            <returns>Package source names with matching prefix "packageId" from package patterns.</returns>
+            <exception cref="T:System.ArgumentException"> if <paramref name="packageId"/> is null, empty, or whitespace only.</exception>
         </member>
-        <member name="M:NuGet.Configuration.PackageNamespacesConfiguration.GetPackageNamespacesConfiguration(NuGet.Configuration.ISettings)">
+        <member name="M:NuGet.Configuration.PackageSourceMapping.GetPackageSourceMapping(NuGet.Configuration.ISettings)">
             <summary>
-            Generates a <see cref="T:NuGet.Configuration.PackageNamespacesConfiguration"/> based on the settings object.
+            Generates a <see cref="T:NuGet.Configuration.PackageSourceMapping"/> based on the settings object.
             </summary>
-            <param name="settings">Search term. Cannot be null, empty, or whitespace only. </param>
-            <returns>A <see cref="T:NuGet.Configuration.PackageNamespacesConfiguration"/> based on the settings.</returns>
+            <param name="settings">Search packageId. Cannot be null, empty, or whitespace only. </param>
+            <returns>A <see cref="T:NuGet.Configuration.PackageSourceMapping"/> based on the settings.</returns>
             <exception cref="T:System.ArgumentNullException"> if <paramref name="settings"/> is null.</exception>
         </member>
         <member name="M:NuGet.Configuration.SearchTree.GetConfiguredPackageSources(System.String)">
             <summary>
-            Get package source names with matching prefix "term" from package namespaces section.
+            Get package source names with matching prefix "term" from package source mapping section.
             </summary>
             <param name="term">Search term. Cannot be null, empty, or whitespace only. </param>
-            <returns>Package source names with matching prefix "term" from package namespaces.</returns>
+            <returns>Package source names with matching prefix "term" from package source mapping section.</returns>
             <exception cref="T:System.ArgumentException"> if <paramref name="term"/> is null, empty, or whitespace only.</exception>
         </member>
         <member name="M:NuGet.Configuration.IPackageSourceProvider.LoadPackageSources">
@@ -467,11 +455,6 @@
               Looks up a localized string similar to The attribute &apos;{0}&apos; has an unallowed value &apos;{1}&apos; in element &apos;{2}&apos;..
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.Resources.AttributeValuesAllowed">
-            <summary>
-              Looks up a localized string similar to Allowed value(s): {0}.
-            </summary>
-        </member>
         <member name="P:NuGet.Configuration.Resources.CannotUpdateDifferentItems">
             <summary>
               Looks up a localized string similar to The item passed to the Update method cannot refer to a different item than the one being updated..
@@ -517,14 +500,14 @@
               Looks up a localized string similar to The attribute {0}-{1} is not valid..
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.Resources.Error_ItemNeedsAtLeastOneNamespace">
+        <member name="P:NuGet.Configuration.Resources.Error_ItemNeedsAtLeastOnePackagePattern">
             <summary>
-              Looks up a localized string similar to Package source namespace &apos;{0}&apos; must have at least one namespace..
+              Looks up a localized string similar to Package source &apos;{0}&apos; must have at least one package pattern..
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.Resources.Error_ItemNeedsAtLeastOneNamespaceWithPath">
+        <member name="P:NuGet.Configuration.Resources.Error_ItemNeedsAtLeastOnePackagePatternWithPath">
             <summary>
-              Looks up a localized string similar to Package source namespace &apos;{0}&apos; must have at least one namespace. Path: &apos;{1}&apos;.
+              Looks up a localized string similar to Package source &apos;{0}&apos; must have at least one package pattern. Path: &apos;{1}&apos;.
             </summary>
         </member>
         <member name="P:NuGet.Configuration.Resources.Error_MergeTwoDifferentSections">
@@ -809,36 +792,36 @@
                 - [Optional] clearTextPassword
             </summary>
         </member>
-        <member name="T:NuGet.Configuration.NamespaceItem">
+        <member name="T:NuGet.Configuration.PackagePatternItem">
             <summary>
-            A NamespaceItem has only a key and no children.
+            A PackagePatternItem has only a key and no children.
                 - [Required] Id
             </summary>
         </member>
-        <member name="T:NuGet.Configuration.PackageNamespacesSourceItem">
+        <member name="T:NuGet.Configuration.PackageSourceMappingSourceItem">
             <summary>
-            A PackageNamespacesSourceItem has only a key and at least 1 <see cref="T:NuGet.Configuration.NamespaceItem"/> child item.
+            A PackageSourceMappingSourceItem has only a key and at least 1 <see cref="T:NuGet.Configuration.PackagePatternItem"/> child item.
                 - [Required] Key
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.PackageNamespacesSourceItem.Namespaces">
+        <member name="P:NuGet.Configuration.PackageSourceMappingSourceItem.Patterns">
             <summary>
-            List of namespaces items part of this package source namespace element.
+            List of package pattern items part of this package source element.
             </summary>
         </member>
-        <member name="P:NuGet.Configuration.PackageNamespacesSourceItem.Key">
+        <member name="P:NuGet.Configuration.PackageSourceMappingSourceItem.Key">
             <summary>
-            Each PackageSourceNamespaces item needs a key.
+            Each PackageSourceMappingSourceItem item needs a key.
             The key should correspond a package source key.
             </summary>
         </member>
-        <member name="M:NuGet.Configuration.PackageNamespacesSourceItem.#ctor(System.String,System.Collections.Generic.IEnumerable{NuGet.Configuration.NamespaceItem})">
+        <member name="M:NuGet.Configuration.PackageSourceMappingSourceItem.#ctor(System.String,System.Collections.Generic.IEnumerable{NuGet.Configuration.PackagePatternItem})">
             <summary>
-            Creates a package source namespace item with the given name, which equals the key and non-empty list of naemspace items.
+            Creates a package source mapping source item with the given name, which equals the key and non-empty list of package patters items.
             </summary>
             <param name="name">A non-empty name of the item which corresponds a package source name.</param>
-            <param name="namespaceItems">A non empty list of namespace items.</param>
-            <exception cref="T:System.ArgumentException">If <paramref name="name"/> is null or empty, or <paramref name="namespaceItems"/> is null or empty.</exception>
+            <param name="packagePatternItems">A non empty list of package pattern items.</param>
+            <exception cref="T:System.ArgumentException">If <paramref name="name"/> is null or empty, or <paramref name="packagePatternItems"/> is null or empty.</exception>
         </member>
         <member name="T:NuGet.Configuration.StoreClientCertItem">
             <summary>
@@ -1001,8 +984,8 @@
         <member name="F:NuGet.Configuration.SettingElementType.Add">
             ---- Known items --- *
         </member>
-        <member name="F:NuGet.Configuration.SettingElementType.PackageNamespaces">
-            Package Namespaces *
+        <member name="F:NuGet.Configuration.SettingElementType.PackageSourceMapping">
+            Package Source Mapping *
         </member>
         <member name="M:NuGet.Configuration.SettingItem.Update(NuGet.Configuration.SettingItem)">
             <remarks>
@@ -1368,16 +1351,6 @@
             - The name of a registered source from a config file
             </summary>
         </member>
-        <member name="M:NuGet.Configuration.SettingsUtility.GetNamespaceMode(NuGet.Configuration.ISettings)">
-            <summary>
-            Reads namespace mode from NuGet.Config
-            </summary>
-            <param name="settings"></param>
-            <returns>Default value if no mode configured.
-            Throws excetion if the mode is invalid.
-            Otherwise returns the namespace mode.
-            </returns>
-        </member>
         <member name="M:NuGet.Configuration.SettingsUtility.VerifyPathIsRooted(System.String,System.String)">
             <summary>
             Throw if a path is relative.
@@ -1439,14 +1412,14 @@
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
         <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file. Optionally, whitespace can be preserved.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>

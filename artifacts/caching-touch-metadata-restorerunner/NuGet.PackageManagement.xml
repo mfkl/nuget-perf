@@ -771,13 +771,6 @@
             Service to execute package scripts.
             </summary>
         </member>
-        <member name="M:NuGet.ProjectManagement.INuGetProjectServices.GetGlobalService``1">
-            <summary>
-            Lookup for global services, IE services that are not scoped to the underlying project.
-            </summary>
-            <typeparam name="T">Type of a service to look for.</typeparam>
-            <returns>Desired service instance or <code>null</code> if not found.</returns>
-        </member>
         <member name="T:NuGet.ProjectManagement.IProjectBuildProperties">
             <summary>
             Represents an API providing read-only access to 
@@ -2295,9 +2288,9 @@
             If true, missing primary targets will be ignored.
             </summary>
         </member>
-        <member name="P:NuGet.PackageManagement.GatherContext.PackageNamespacesConfiguration">
+        <member name="P:NuGet.PackageManagement.GatherContext.PackageSourceMapping">
             <summary>
-            PackageNamespacesConfiguration section value from nuget.config file, if section doesn't exist then it's null.
+            PackageSourceMapping section value from nuget.config file, if section doesn't exist then it's null.
             </summary>
         </member>
         <member name="P:NuGet.PackageManagement.GatherContext.Log">
@@ -2825,16 +2818,6 @@
               Looks up a localized string similar to Unable to uninstall &apos;{0}&apos; because &apos;{1}&apos; depend on it..
             </summary>
         </member>
-        <member name="P:NuGet.PackageManagement.Strings.PackageNamespaceMatchFound">
-            <summary>
-              Looks up a localized string similar to Package namespace matches found for package ID &apos;{0}&apos; are: &apos;{1}&apos;.
-            </summary>
-        </member>
-        <member name="P:NuGet.PackageManagement.Strings.PackageNamespaceNoMatchFound">
-            <summary>
-              Looks up a localized string similar to Package namespace match not found for package ID &apos;{0}&apos;.
-            </summary>
-        </member>
         <member name="P:NuGet.PackageManagement.Strings.PackageNotFound">
             <summary>
               Looks up a localized string similar to Package &apos;{0}&apos; is not found.
@@ -2863,6 +2846,16 @@
         <member name="P:NuGet.PackageManagement.Strings.PackagesCouldNotBeInstalled">
             <summary>
               Looks up a localized string similar to Packages could not be installed.
+            </summary>
+        </member>
+        <member name="P:NuGet.PackageManagement.Strings.PackageSourceMappingPatternMatchFound">
+            <summary>
+              Looks up a localized string similar to Package source mapping matches found for package ID &apos;{0}&apos; are: &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:NuGet.PackageManagement.Strings.PackageSourceMappingPatternNoMatchFound">
+            <summary>
+              Looks up a localized string similar to Package source mapping match not found for package ID &apos;{0}&apos;.
             </summary>
         </member>
         <member name="P:NuGet.PackageManagement.Strings.PackageStreamShouldBeSeekable">
@@ -3293,14 +3286,14 @@
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
         <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file. Optionally, whitespace can be preserved.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>

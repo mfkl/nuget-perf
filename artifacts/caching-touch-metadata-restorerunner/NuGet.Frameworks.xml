@@ -971,14 +971,14 @@
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
         <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file. Optionally, whitespace can be preserved.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>

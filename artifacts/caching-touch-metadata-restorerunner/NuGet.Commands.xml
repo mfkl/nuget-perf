@@ -2382,6 +2382,11 @@
               Looks up a localized string similar to A trusted signer &apos;{0}&apos; already exists..
             </summary>
         </member>
+        <member name="P:NuGet.Commands.Strings.Error_TrustFingerPrintAlreadyExist">
+            <summary>
+              Looks up a localized string similar to The certificate finger you&apos;re trying to add is already in the certificate fingerprint list..
+            </summary>
+        </member>
         <member name="P:NuGet.Commands.Strings.Error_UnableToFindProjectInfo">
             <summary>
               Looks up a localized string similar to Unable to find project information for &apos;{0}&apos;. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore..
@@ -3746,14 +3751,14 @@
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
         <member name="M:NuGet.Shared.XmlUtility.Load(System.String,System.Xml.Linq.LoadOptions)">
             <summary>
             Creates a new <see cref="T:System.Xml.Linq.XDocument"/> from a file. Optionally, whitespace can be preserved.
             </summary>
-            <param name="inputUri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
+            <param name="path">The complete file path to be read into a new <see cref="T:System.Xml.Linq.XDocument"/>.</param>
             <param name="options">A set of <see cref="T:System.Xml.Linq.LoadOptions"/>.</param>
             <returns>An <see cref="T:System.Xml.Linq.XDocument"/> that contains the contents of the specified file.</returns>
         </member>
